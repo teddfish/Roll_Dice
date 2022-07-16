@@ -28,7 +28,7 @@ public class CameraShake : MonoBehaviour
         var offset = shakeMultiplier * shakeCurve.Evaluate(shakeTimer) * offsetPosition;
         this.transform.position = initialPosition + offset;
 
-        Debug.Log(shakeTimer);
+        //Debug.Log(shakeTimer);
     }
 
     public void StartShake(Vector3 direction)

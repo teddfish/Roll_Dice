@@ -8,6 +8,7 @@ public class CC : MonoBehaviour
     [SerializeField] float offset = 0.5f;
     [SerializeField] CameraShake camShaker;
     bool rolling;
+    bool validMove;
     public int currentFace;
 
     public int moveCounter;
