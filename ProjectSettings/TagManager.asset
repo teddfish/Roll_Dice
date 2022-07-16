@@ -10,6 +10,7 @@ TagManager:
   - Four
   - Five
   - Six
+  - Checkers
   layers:
   - Default
   - TransparentFX

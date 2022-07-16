@@ -13,6 +13,16 @@ public class CC : MonoBehaviour
 
     public int moveCounter;
 
+    ValidMoveDetection valMove;
+    [SerializeField] GameObject leftC;
+    [SerializeField] GameObject rightC;
+    [SerializeField] GameObject forwardC;
+    [SerializeField] GameObject backC;
+    private void Start() 
+    {
+        valMove = GameObject.Find("Valid_Move_Detection").GetComponent<ValidMoveDetection>();    
+    }
+
 
     void Update()
     {
@@ -21,21 +31,32 @@ public class CC : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        bool leftTileCheck = leftC.GetComponent<TileCheck>().blockMove;
+        bool rightTileCheck = rightC.GetComponent<TileCheck>().blockMove;
+        bool forwardTileCheck = forwardC.GetComponent<TileCheck>().blockMove;
+        bool backTileCheck = backC.GetComponent<TileCheck>().blockMove;
+
+
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow) && !leftTileCheck)
         {
             Move(Vector3.left);
+            valMove.CheckMove(Vector3.left);
         }
-        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)&& !rightTileCheck)
         {
             Move(Vector3.right);
+            valMove.CheckMove(Vector3.right);
+
         }
-        else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)&& !forwardTileCheck)
         {
-            Move(Vector3.forward);
+            Move(Vector3.forward);            
+            valMove.CheckMove(Vector3.forward);
         }
-        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) && !backTileCheck)
         {
-            Move(Vector3.back);
+            Move(Vector3.back);            
+            valMove.CheckMove(Vector3.back);
         }
 
         Ray ray = new Ray(this.transform.position, Vector3.down);
@@ -68,7 +89,7 @@ public class CC : MonoBehaviour
             }
 
             //print(currentFace);
-            print (moveCounter);
+            //print (moveCounter);
             //Debug.Log(hit.transform.gameObject.name);
 
         }
