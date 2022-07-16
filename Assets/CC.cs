@@ -6,6 +6,7 @@ public class CC : MonoBehaviour
 {
     [SerializeField] float rollSpeed = 5;
     [SerializeField] float offset = 0.5f;
+    [SerializeField] CameraShake camShaker;
     bool rolling;
     public int currentFace;
 
@@ -78,6 +79,7 @@ public class CC : MonoBehaviour
         Vector3 rollEdge = transform.position + (direction + Vector3.down) * offset;
         Vector3 axis = Vector3.Cross(Vector3.up, direction);
 
+        camShaker.StartShake(direction);
         StartCoroutine(Roll(rollEdge, axis));
 
         moveCounter += 1;
