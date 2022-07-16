@@ -25,10 +25,10 @@ public class CC : MonoBehaviour
 
     Conditions conditions;
 
-    private void Start() 
+    private void Start()
     {
-        valMove = GameObject.Find("Valid_Move_Detection").GetComponent<ValidMoveDetection>();   
-        conditions = GameObject.Find("Special_Tile").GetComponent<Conditions>(); 
+        valMove = GameObject.Find("Valid_Move_Detection").GetComponent<ValidMoveDetection>();
+        conditions = GameObject.Find("Special_Tile").GetComponent<Conditions>();
     }
 
 
@@ -53,12 +53,12 @@ public class CC : MonoBehaviour
         }
         else if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && !forwardC.blockMove)
         {
-            Move(Vector3.forward);            
+            Move(Vector3.forward);
             valMove.CheckMove(Vector3.forward);
         }
         else if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) && !backC.blockMove)
         {
-            Move(Vector3.back);            
+            Move(Vector3.back);
             valMove.CheckMove(Vector3.back);
         }
 
@@ -95,16 +95,18 @@ public class CC : MonoBehaviour
 
             if (conditions.tileTouched)
             {
-                if (currentFace == conditions.win)
+                conditions.tileTouched = false;
+
+                if (conditions.faceConditions[currentFace - 1] == Conditions.ConditionType.Win)
                 {
-                    print("yes");
-                    conditions.tileTouched = false;
+                    print("You win");
+                }
+                else if (conditions.faceConditions[currentFace - 1] == Conditions.ConditionType.Nothing)
+                {
+                    print("Doing nothing");
                 }
 
-                
             }
-            //print (moveCounter);
-            //Debug.Log(hit.transform.gameObject.name);
 
         }
 

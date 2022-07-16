@@ -4442,7 +4442,23 @@ PrefabInstance:
       objectReference: {fileID: 1435764852}
     - target: {fileID: 313463445505513385, guid: d032dc598b489ab4c9a75f786d03f25f, type: 3}
       propertyPath: win
-      value: 6
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 313463445505513385, guid: d032dc598b489ab4c9a75f786d03f25f, type: 3}
+      propertyPath: face3
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 313463445505513385, guid: d032dc598b489ab4c9a75f786d03f25f, type: 3}
+      propertyPath: face4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 313463445505513385, guid: d032dc598b489ab4c9a75f786d03f25f, type: 3}
+      propertyPath: face5
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 313463445505513385, guid: d032dc598b489ab4c9a75f786d03f25f, type: 3}
+      propertyPath: face6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 313463445505513385, guid: d032dc598b489ab4c9a75f786d03f25f, type: 3}
       propertyPath: nothing
@@ -4462,7 +4478,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 313463445505513385, guid: d032dc598b489ab4c9a75f786d03f25f, type: 3}
       propertyPath: reverseMovementRotation
-      value: 4
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 313463445505513385, guid: d032dc598b489ab4c9a75f786d03f25f, type: 3}
+      propertyPath: faceConditions.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 313463445505513385, guid: d032dc598b489ab4c9a75f786d03f25f, type: 3}
+      propertyPath: faceConditions.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 313463445505513385, guid: d032dc598b489ab4c9a75f786d03f25f, type: 3}
+      propertyPath: faceConditions.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 313463445505513385, guid: d032dc598b489ab4c9a75f786d03f25f, type: 3}
+      propertyPath: faceConditions.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 313463445505513385, guid: d032dc598b489ab4c9a75f786d03f25f, type: 3}
+      propertyPath: faceConditions.Array.data[4]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 313463445505513385, guid: d032dc598b489ab4c9a75f786d03f25f, type: 3}
+      propertyPath: faceConditions.Array.data[5]
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4019227669882185642, guid: d032dc598b489ab4c9a75f786d03f25f, type: 3}
       propertyPath: m_Mass
