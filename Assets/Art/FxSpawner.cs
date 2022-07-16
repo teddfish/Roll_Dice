@@ -19,7 +19,7 @@ public class FxSpawner : MonoBehaviour
         //     SpawnWinFx(this.transform.position);
     }
 
-    void SpawnWinFx(Vector3 dicePosition)
+    public void SpawnWinFx(Vector3 dicePosition)
     {
         var fx = GameObject.Instantiate(winFx, dicePosition + diceSpawnOffset, Quaternion.identity);
         GameObject.Destroy(fx, 1.5f);

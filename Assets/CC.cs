@@ -22,10 +22,13 @@ public class CC : MonoBehaviour
     [SerializeField] TileCheck rightC;
     [SerializeField] TileCheck forwardC;
     [SerializeField] TileCheck backC;
-    
+
+    Conditions conditions;
+
     private void Start() 
     {
-        valMove = GameObject.Find("Valid_Move_Detection").GetComponent<ValidMoveDetection>();    
+        valMove = GameObject.Find("Valid_Move_Detection").GetComponent<ValidMoveDetection>();   
+        conditions = GameObject.Find("Special_Tile").GetComponent<Conditions>(); 
     }
 
 
@@ -83,12 +86,23 @@ public class CC : MonoBehaviour
             {
                 currentFace = 5;
             }
-            else
+            else if (hit.transform.tag == "Six")
             {
                 currentFace = 6;
             }
 
             //print(currentFace);
+
+            if (conditions.tileTouched)
+            {
+                if (currentFace == conditions.win)
+                {
+                    print("yes");
+                    conditions.tileTouched = false;
+                }
+
+                
+            }
             //print (moveCounter);
             //Debug.Log(hit.transform.gameObject.name);
 
@@ -121,4 +135,5 @@ public class CC : MonoBehaviour
 
         rolling = false;
     }
+
 }
