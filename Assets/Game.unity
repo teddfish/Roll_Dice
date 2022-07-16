@@ -2469,10 +2469,10 @@ MonoBehaviour:
   camShaker: {fileID: 963194231}
   currentFace: 0
   moveCounter: 0
-  leftC: {fileID: 1880920455}
-  rightC: {fileID: 397306076}
-  forwardC: {fileID: 27716139}
-  backC: {fileID: 1349177422}
+  leftC: {fileID: 1880920460}
+  rightC: {fileID: 397306081}
+  forwardC: {fileID: 27716144}
+  backC: {fileID: 1349177427}
 --- !u!23 &1162047433
 MeshRenderer:
   m_ObjectHideFlags: 0

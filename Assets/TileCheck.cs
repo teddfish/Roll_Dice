@@ -5,11 +5,6 @@ using UnityEngine;
 public class TileCheck : MonoBehaviour
 {
     public bool blockMove;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -23,19 +18,9 @@ public class TileCheck : MonoBehaviour
         else {
             blockMove = false;
         }
-        print(blockMove);
+        //print(blockMove);
     }
 
-    public void DrawRayCheckTiles()
-    {
-        // Ray ray = new Ray(this.transform.position, Vector3.down);
-        // RaycastHit hit;
-        // if (Physics.Raycast(ray, out hit, 1f))
-        // {
-        //     tileAvailable = true;
-        // }
-        // print(tileAvailable);
-    }
 
     private void OnDrawGizmos() 
     {

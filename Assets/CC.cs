@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class CC : MonoBehaviour
 {
+    //basic movement
     [SerializeField] float rollSpeed = 5;
     [SerializeField] float offset = 0.5f;
     [SerializeField] CameraShake camShaker;
     bool rolling;
-    bool validMove;
+
+    //tracks which face is facing the tiles
     public int currentFace;
 
+    //move counter
     public int moveCounter;
 
+    //detecting valid move
     ValidMoveDetection valMove;
-    [SerializeField] GameObject leftC;
-    [SerializeField] GameObject rightC;
-    [SerializeField] GameObject forwardC;
-    [SerializeField] GameObject backC;
+    [SerializeField] TileCheck leftC;
+    [SerializeField] TileCheck rightC;
+    [SerializeField] TileCheck forwardC;
+    [SerializeField] TileCheck backC;
+    
     private void Start() 
     {
         valMove = GameObject.Find("Valid_Move_Detection").GetComponent<ValidMoveDetection>();    
@@ -31,29 +36,24 @@ public class CC : MonoBehaviour
             return;
         }
 
-        bool leftTileCheck = leftC.GetComponent<TileCheck>().blockMove;
-        bool rightTileCheck = rightC.GetComponent<TileCheck>().blockMove;
-        bool forwardTileCheck = forwardC.GetComponent<TileCheck>().blockMove;
-        bool backTileCheck = backC.GetComponent<TileCheck>().blockMove;
 
-
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow) && !leftTileCheck)
+        if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && !leftC.blockMove)
         {
             Move(Vector3.left);
             valMove.CheckMove(Vector3.left);
         }
-        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)&& !rightTileCheck)
+        else if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && !rightC.blockMove)
         {
             Move(Vector3.right);
             valMove.CheckMove(Vector3.right);
 
         }
-        else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)&& !forwardTileCheck)
+        else if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && !forwardC.blockMove)
         {
             Move(Vector3.forward);            
             valMove.CheckMove(Vector3.forward);
         }
-        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) && !backTileCheck)
+        else if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) && !backC.blockMove)
         {
             Move(Vector3.back);            
             valMove.CheckMove(Vector3.back);
