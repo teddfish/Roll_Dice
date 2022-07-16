@@ -7,6 +7,9 @@ public class CC : MonoBehaviour
     [SerializeField] float rollSpeed = 5;
     [SerializeField] float offset = 0.5f;
     bool rolling;
+    public int currentFace;
+
+    public int moveCounter;
 
 
     void Update()
@@ -37,8 +40,34 @@ public class CC : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 0.5f))
         {
+            if (hit.transform.tag == "One")
+            {
+                currentFace = 1;
+            }
+            else if (hit.transform.tag == "Two")
+            {
+                currentFace = 2;
+            }
+            else if (hit.transform.tag == "Three")
+            {
+                currentFace = 3;
+            }
+            else if (hit.transform.tag == "Four")
+            {
+                currentFace = 4;
+            }
+            else if (hit.transform.tag == "Five")
+            {
+                currentFace = 5;
+            }
+            else
+            {
+                currentFace = 6;
+            }
 
-            Debug.Log(hit.transform.gameObject.name);
+            //print(currentFace);
+            print (moveCounter);
+            //Debug.Log(hit.transform.gameObject.name);
 
         }
 
@@ -50,6 +79,8 @@ public class CC : MonoBehaviour
         Vector3 axis = Vector3.Cross(Vector3.up, direction);
 
         StartCoroutine(Roll(rollEdge, axis));
+
+        moveCounter += 1;
     }
 
 
