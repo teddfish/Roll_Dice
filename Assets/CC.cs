@@ -8,6 +8,7 @@ public class CC : MonoBehaviour
     [SerializeField] float offset = 0.5f;
     bool rolling;
 
+
     void Update()
     {
         if (rolling)
@@ -32,9 +33,18 @@ public class CC : MonoBehaviour
             Move(Vector3.back);
         }
 
+        Ray ray = new Ray(this.transform.position, Vector3.down);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 0.5f))
+        {
+
+            Debug.Log(hit.transform.gameObject.name);
+
+        }
+
     }
 
-    void Move(Vector3 direction)
+    public void Move(Vector3 direction)
     {
         Vector3 rollEdge = transform.position + (direction + Vector3.down) * offset;
         Vector3 axis = Vector3.Cross(Vector3.up, direction);
