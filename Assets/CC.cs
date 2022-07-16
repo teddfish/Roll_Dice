@@ -10,39 +10,40 @@ public class CC : MonoBehaviour
 
     void Update()
     {
-        if (rolling) 
+        if (rolling)
         {
             return;
         }
 
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            Move (Vector3.left);
+            Move(Vector3.left);
         }
-        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            Move (Vector3.right);
+            Move(Vector3.right);
         }
-        else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
-            Move (Vector3.forward);
+            Move(Vector3.forward);
         }
-        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
-            Move (Vector3.back);
+            Move(Vector3.back);
         }
+
     }
 
-    void Move (Vector3 direction)
+    void Move(Vector3 direction)
     {
-            Vector3 rollEdge = transform.position + (direction + Vector3.down) * offset;
-            Vector3 axis = Vector3.Cross(Vector3.up, direction);
+        Vector3 rollEdge = transform.position + (direction + Vector3.down) * offset;
+        Vector3 axis = Vector3.Cross(Vector3.up, direction);
 
-            StartCoroutine(Roll(rollEdge, axis));
+        StartCoroutine(Roll(rollEdge, axis));
     }
-    
 
-    IEnumerator Roll (Vector3 rollEdge, Vector3 axis)
+
+    IEnumerator Roll(Vector3 rollEdge, Vector3 axis)
     {
         rolling = true;
 
