@@ -25,6 +25,9 @@ public class CC : MonoBehaviour
 
     Conditions conditions;
 
+    //reverse rotation condition
+    bool alternateMovement;
+
     private void Start()
     {
         valMove = GameObject.Find("Valid_Move_Detection").GetComponent<ValidMoveDetection>();
@@ -42,22 +45,59 @@ public class CC : MonoBehaviour
 
         if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && !leftC.blockMove)
         {
+            //reverse movement
+            if (alternateMovement == true)
+            {
+                AltMove(Vector3.right);
+                valMove.CheckMove(Vector3.left);
+                return;
+            }
+
+            //normal movement 
             Move(Vector3.left);
             valMove.CheckMove(Vector3.left);
+
         }
         else if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && !rightC.blockMove)
         {
+            //reverse movement
+            if (alternateMovement == true)
+            {
+                AltMove(Vector3.left);
+                valMove.CheckMove(Vector3.right);
+                return;
+            }
+
+            //normal movement
             Move(Vector3.right);
             valMove.CheckMove(Vector3.right);
 
         }
         else if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && !forwardC.blockMove)
-        {
+        {            
+            //reverse movement
+            if (alternateMovement == true)
+            {
+                AltMove(Vector3.back);
+                valMove.CheckMove(Vector3.forward);
+                return;
+            }
+
+            //normal movement
             Move(Vector3.forward);
             valMove.CheckMove(Vector3.forward);
         }
         else if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) && !backC.blockMove)
         {
+            //reverse movement
+            if (alternateMovement == true)
+            {
+                AltMove(Vector3.forward);
+                valMove.CheckMove(Vector3.back);
+                return;
+            }
+
+            //normal movement
             Move(Vector3.back);
             valMove.CheckMove(Vector3.back);
         }
@@ -105,6 +145,16 @@ public class CC : MonoBehaviour
                 {
                     print("Doing nothing");
                 }
+                else if (conditions.faceConditions[currentFace - 1] == Conditions.ConditionType.ReverseRotation)
+                {   
+                    if (!alternateMovement)
+                    {
+                        alternateMovement = true;
+                    }
+                    else {
+                        alternateMovement = false;
+                    }
+                }
 
             }
 
@@ -123,6 +173,30 @@ public class CC : MonoBehaviour
         moveCounter += 1;
     }
 
+    public void AltMove(Vector3 direction)
+    {
+        Vector3 reverseRollEdge = transform.position - (direction + Vector3.down) * offset;
+        Vector3 axis = Vector3.Cross(Vector3.up, direction);
+
+        camShaker.StartShake(direction);
+        StartCoroutine(ReverseRoll(reverseRollEdge, axis));
+        moveCounter += 1;
+    }
+
+    IEnumerator ReverseRoll(Vector3 reverseRollEdge, Vector3 axis)
+    {
+        rolling = true;
+
+        for (int i = 0; i < (90 / rollSpeed); i++)
+        {
+            transform.RotateAround(reverseRollEdge, axis, rollSpeed);
+            //transform.position = transform.position + direction;
+
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        rolling = false;
+    }
 
     IEnumerator Roll(Vector3 rollEdge, Vector3 axis)
     {
