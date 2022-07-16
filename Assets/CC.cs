@@ -8,6 +8,7 @@ public class CC : MonoBehaviour
     [SerializeField] float rollSpeed = 5;
     [SerializeField] float offset = 0.5f;
     [SerializeField] CameraShake camShaker;
+    [SerializeField] GameObject disappearingTiles;
     bool rolling;
 
     //tracks which face is facing the tiles
@@ -17,6 +18,7 @@ public class CC : MonoBehaviour
     public int moveCounter;
 
     //detecting valid move
+    Transform validMoveGO;
     ValidMoveDetection valMove;
     [SerializeField] TileCheck leftC;
     [SerializeField] TileCheck rightC;
@@ -28,10 +30,24 @@ public class CC : MonoBehaviour
     //reverse rotation condition
     bool alternateMovement;
 
+    //double move condition
+    bool rotate90;
+
+    //toggle tiles condition
+    bool toggleTiles;
+
+    //reset condition
+    bool canTeleport;
+    Vector3 startPosition;
+
     private void Start()
     {
+        validMoveGO = GameObject.Find("Valid_Move_Detection").transform;
         valMove = GameObject.Find("Valid_Move_Detection").GetComponent<ValidMoveDetection>();
         conditions = GameObject.Find("Special_Tile").GetComponent<Conditions>();
+
+        startPosition = transform.position;
+        
     }
 
 
@@ -42,6 +58,34 @@ public class CC : MonoBehaviour
             return;
         }
 
+        //rotate 90 condition
+        if (rotate90)
+        {
+            RotateCube();
+            rotate90 = false;
+        }
+
+        //tiles on and off condition
+        if (toggleTiles)
+        {
+            if (disappearingTiles.activeInHierarchy)
+            {
+                disappearingTiles.SetActive(false);
+                toggleTiles = false;
+            }
+            else {
+                disappearingTiles.SetActive(true);
+                toggleTiles = false;
+            }
+
+        }
+
+        if (canTeleport)
+        {
+            transform.position = startPosition;
+            validMoveGO.position = startPosition;
+            canTeleport = false;
+        }
 
         if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && !leftC.blockMove)
         {
@@ -101,6 +145,10 @@ public class CC : MonoBehaviour
             Move(Vector3.back);
             valMove.CheckMove(Vector3.back);
         }
+        else if (Input.GetKeyDown(KeyCode.P) && !backC.blockMove)
+        {
+            RotateCube();
+        }
 
         Ray ray = new Ray(this.transform.position, Vector3.down);
         RaycastHit hit;
@@ -155,6 +203,36 @@ public class CC : MonoBehaviour
                         alternateMovement = false;
                     }
                 }
+                else if (conditions.faceConditions[currentFace - 1] == Conditions.ConditionType.RotateAround)
+                {
+                    if (!rotate90)
+                    {
+                        rotate90 = true;
+                    }
+                    else {
+                        rotate90 = false;
+                    }
+                }                
+                else if (conditions.faceConditions[currentFace - 1] == Conditions.ConditionType.ToggleTiles)
+                {
+                    if (!toggleTiles)
+                    {
+                        toggleTiles = true;
+                    }
+                    else {
+                        toggleTiles = false;
+                    }
+                }
+                else if (conditions.faceConditions[currentFace - 1] == Conditions.ConditionType.Teleport)
+                {
+                    if (!canTeleport)
+                    {
+                        canTeleport = true;
+                    }
+                    else {
+                        canTeleport = false;
+                    }
+                }
 
             }
 
@@ -183,6 +261,16 @@ public class CC : MonoBehaviour
         moveCounter += 1;
     }
 
+    public void RotateCube()
+    {
+        Vector3 rotatePoint = this.transform.position;
+        Vector3 rotateAxis = Vector3.up;
+
+        StartCoroutine(Rotate(rotatePoint, rotateAxis));
+        moveCounter += 1;
+
+    }
+
     IEnumerator ReverseRoll(Vector3 reverseRollEdge, Vector3 axis)
     {
         rolling = true;
@@ -199,6 +287,20 @@ public class CC : MonoBehaviour
     }
 
     IEnumerator Roll(Vector3 rollEdge, Vector3 axis)
+    {
+        rolling = true;
+
+        for (int i = 0; i < (90 / rollSpeed); i++)
+        {
+            transform.RotateAround(rollEdge, axis, rollSpeed);
+
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        rolling = false;
+    }
+
+    IEnumerator Rotate(Vector3 rollEdge, Vector3 axis)
     {
         rolling = true;
 

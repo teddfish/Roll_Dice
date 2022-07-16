@@ -8,7 +8,7 @@ public class Conditions : MonoBehaviour
     {
         Win,
         Nothing,
-        DoubleMove,
+        RotateAround,
         ReverseRotation,
         ToggleTiles,
         Teleport
