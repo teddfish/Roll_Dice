@@ -40,11 +40,19 @@ public class CC : MonoBehaviour
     bool canTeleport;
     Vector3 startPosition;
 
+    //audio clips
+    AudioSource audioSrc;
+    [Header("Audio")]
+    [SerializeField] AudioClip moveSound;
+    [SerializeField] AudioClip blockedSound, winSound, nothingSound, rotateSound, teleportSound, tileTSound, reverseMSound, conditionOffSound;
+
     private void Start()
     {
         validMoveGO = GameObject.Find("Valid_Move_Detection").transform;
         valMove = GameObject.Find("Valid_Move_Detection").GetComponent<ValidMoveDetection>();
         conditions = GameObject.Find("Special_Tile").GetComponent<Conditions>();
+        audioSrc = GetComponent<AudioSource>();
+
 
         startPosition = transform.position;
 
@@ -82,6 +90,12 @@ public class CC : MonoBehaviour
             transform.position = startPosition;
             validMoveGO.position = startPosition;
             canTeleport = false;
+        }
+
+        if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow) && leftC.blockMove) || ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && rightC.blockMove) 
+        || ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && forwardC.blockMove) || ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) && backC.blockMove))
+        {
+            audioSrc.PlayOneShot(blockedSound);
         }
 
         if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && !leftC.blockMove)
@@ -248,6 +262,7 @@ public class CC : MonoBehaviour
 
         camShaker.StartShake(direction);
         StartCoroutine(Roll(rollEdge, axis));
+        audioSrc.PlayOneShot(moveSound);
 
         moveCounter += 1;
     }
