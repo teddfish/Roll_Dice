@@ -28,16 +28,22 @@ public class CC : MonoBehaviour
     Conditions conditions;
 
     //reverse rotation condition
-    bool alternateMovement;
+    [HideInInspector]public bool alternateMovement;
 
     //double move condition
-    bool rotate90;
+    [HideInInspector]public bool rotate90;
 
     //toggle tiles condition
-    bool toggleTiles;
+    [HideInInspector]public bool toggleTiles;
 
     //reset condition
-    bool canTeleport;
+    [HideInInspector]public bool canTeleport;
+
+    [HideInInspector]public bool hasWon;
+
+    [HideInInspector]public bool doingNothing;
+
+
     Vector3 startPosition;
 
     //audio clips
@@ -69,6 +75,8 @@ public class CC : MonoBehaviour
         //rotate 90 condition
         if (rotate90)
         {
+            audioSrc.PlayOneShot(rotateSound);
+
             RotateCube();
             rotate90 = false;
         }
@@ -87,6 +95,8 @@ public class CC : MonoBehaviour
 
         if (canTeleport)
         {
+            audioSrc.PlayOneShot(teleportSound);
+
             transform.position = startPosition;
             validMoveGO.position = startPosition;
             canTeleport = false;
@@ -202,7 +212,7 @@ public class CC : MonoBehaviour
                 }
                 else if (conditions.faceConditions[currentFace - 1] == Conditions.ConditionType.Nothing)
                 {
-                    print("Doing nothing");
+                    audioSrc.PlayOneShot(nothingSound);
                 }
                 else if (conditions.faceConditions[currentFace - 1] == Conditions.ConditionType.ReverseRotation)
                 {
@@ -228,6 +238,8 @@ public class CC : MonoBehaviour
                 }
                 else if (conditions.faceConditions[currentFace - 1] == Conditions.ConditionType.ToggleTiles)
                 {
+                    audioSrc.PlayOneShot(tileTSound);
+
                     if (!toggleTiles)
                     {
                         toggleTiles = true;
@@ -269,11 +281,11 @@ public class CC : MonoBehaviour
 
     public void AltMove(Vector3 direction)
     {
-        Vector3 reverseRollEdge = transform.position - (direction + Vector3.down) * offset;
+        Vector3 reverseRollEdge = transform.position - (direction - Vector3.down) * -offset;
         Vector3 axis = Vector3.Cross(Vector3.up, direction);
 
         camShaker.StartShake(direction);
-        StartCoroutine(ReverseRoll(reverseRollEdge, axis));
+        StartCoroutine(ReverseRoll(reverseRollEdge, axis, direction));
         moveCounter += 1;
     }
 
@@ -287,17 +299,21 @@ public class CC : MonoBehaviour
 
     }
 
-    IEnumerator ReverseRoll(Vector3 reverseRollEdge, Vector3 axis)
+    IEnumerator ReverseRoll(Vector3 reverseRollEdge, Vector3 axis, Vector3 dir)
     {
         rolling = true;
 
-        for (int i = 0; i < (90 / rollSpeed); i++)
+        Vector3 pos = transform.position;
+
+        for (int i = 0; i < (90/ rollSpeed); i++)
         {
+            pos += (reverseRollEdge - dir)  * 0.02f;
             transform.RotateAround(reverseRollEdge, axis, rollSpeed);
-            //transform.position = transform.position + direction;
+            transform.position = new Vector3(pos.x, 0.5f, pos.y);
 
             yield return new WaitForSeconds(0.01f);
         }
+        //pos.y = 0f;
 
         rolling = false;
     }

@@ -303,10 +303,10 @@ MonoBehaviour:
   moveSound: {fileID: 8300000, guid: e37d8976558814440b901c5ec565af77, type: 3}
   blockedSound: {fileID: 8300000, guid: d8462cd621e920a4abb190b8ce9f8675, type: 3}
   winSound: {fileID: 0}
-  nothingSound: {fileID: 0}
-  rotateSound: {fileID: 0}
-  teleportSound: {fileID: 0}
-  tileTSound: {fileID: 0}
+  nothingSound: {fileID: 8300000, guid: a8443dc453cabd143acb319ba9466345, type: 3}
+  rotateSound: {fileID: 8300000, guid: 8721f81211741034cbed1dc63be28892, type: 3}
+  teleportSound: {fileID: 8300000, guid: 6ec505a722018fe40ba5f8a3ce7bdf6c, type: 3}
+  tileTSound: {fileID: 8300000, guid: cbf98e83517442f44b81e4fdea5146ee, type: 3}
   reverseMSound: {fileID: 0}
   conditionOffSound: {fileID: 0}
 --- !u!82 &8693002037482795113
