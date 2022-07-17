@@ -17,7 +17,7 @@ public class Conditions : MonoBehaviour
     public bool tileTouched;
 
     [SerializeField]
-    FxSpawner fx;
+    public FxSpawner fx;
 
     public ConditionType[] faceConditions;
 
@@ -27,7 +27,6 @@ public class Conditions : MonoBehaviour
         {
             tileTouched = true;
         } 
-
     }
 
     void OnTriggerExit(Collider other) 

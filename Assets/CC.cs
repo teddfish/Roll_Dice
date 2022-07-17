@@ -208,6 +208,7 @@ public class CC : MonoBehaviour
                     if (!hasWon)
                     {
                         hasWon = true;
+                        conditions.fx.SpawnWinFx(transform.position);
                         audioSrc.PlayOneShot(winSound);
                     }                    
                     print("You win");

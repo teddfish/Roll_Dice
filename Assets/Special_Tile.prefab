@@ -47,6 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39ee1ebab8c1b43498eecc80c5b518c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileTouched: 0
+  fx: {fileID: 4352913799408269664}
+  faceConditions: 000000000000000000000000000000000000000000000000
 --- !u!65 &8297207134265624763
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -133,6 +136,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b0a9ceea7a8914dbf035a8c0cd488e, type: 3}
+--- !u!1 &5903303344008726997 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4716030964985337432, guid: f5b0a9ceea7a8914dbf035a8c0cd488e, type: 3}
+  m_PrefabInstance: {fileID: 1197405753623027597}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4352913799408269664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5903303344008726997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d18eba2ae4d4444adbe2cba4920ec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winFx: {fileID: 1729478374878216721, guid: f3e55f2190c1ad448912df1705674cf0, type: 3}
+  diceSpawnOffset: {x: 0, y: 0.25, z: 0}
 --- !u!4 &6532312594277225327 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5348417639536512226, guid: f5b0a9ceea7a8914dbf035a8c0cd488e, type: 3}
