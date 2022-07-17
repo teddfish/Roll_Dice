@@ -25,7 +25,7 @@ public class CC : MonoBehaviour
     [SerializeField] TileCheck forwardC;
     [SerializeField] TileCheck backC;
 
-    Conditions conditions;
+    Conditions[] conditions;
 
     //reverse rotation condition
     [HideInInspector] public bool alternateMovement;
@@ -56,7 +56,7 @@ public class CC : MonoBehaviour
     {
         validMoveGO = GameObject.Find("Valid_Move_Detection").transform;
         valMove = GameObject.Find("Valid_Move_Detection").GetComponent<ValidMoveDetection>();
-        conditions = GameObject.Find("Special_Tile").GetComponent<Conditions>();
+        conditions = GameObject.FindObjectsOfType<Conditions>();
         audioSrc = GetComponent<AudioSource>();
 
 
@@ -73,6 +73,7 @@ public class CC : MonoBehaviour
         {
             return;
         }
+
 
 
         if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow) && leftC.blockMove) || ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && rightC.blockMove)
@@ -199,27 +200,33 @@ public class CC : MonoBehaviour
             }
 
             //print(currentFace);
-
-            if (conditions.tileTouched)
+            Conditions currentCondition = null;
+            foreach(Conditions c in conditions)
             {
-                conditions.tileTouched = false;
+                if (c.tileTouched)
+                    currentCondition = c;
+            }
 
-                if (conditions.faceConditions[currentFace - 1] == Conditions.ConditionType.Win)
+            if (currentCondition != null && currentCondition.tileTouched)
+            {
+                currentCondition.tileTouched = false;
+
+                if (currentCondition.faceConditions[currentFace - 1] == Conditions.ConditionType.Win)
                 {
                     if (!hasWon)
                     {
                         hasWon = true;
-                        conditions.fx.SpawnWinFx(transform.position);
+                        currentCondition.fx.SpawnWinFx(transform.position);
                         audioSrc.PlayOneShot(winSound);
                     }                    
                     print("You win");
                 }
-                else if (conditions.faceConditions[currentFace - 1] == Conditions.ConditionType.Nothing)
+                else if (currentCondition.faceConditions[currentFace - 1] == Conditions.ConditionType.Nothing)
                 {
                     doingNothing = true;
                     audioSrc.PlayOneShot(nothingSound);
                 }
-                else if (conditions.faceConditions[currentFace - 1] == Conditions.ConditionType.ReverseRotation)
+                else if (currentCondition.faceConditions[currentFace - 1] == Conditions.ConditionType.ReverseRotation)
                 {
                     audioSrc.PlayOneShot(reverseMSound);
                     if (!alternateMovement)
@@ -231,7 +238,7 @@ public class CC : MonoBehaviour
                         alternateMovement = false;
                     }
                 }
-                else if (conditions.faceConditions[currentFace - 1] == Conditions.ConditionType.RotateAround)
+                else if (currentCondition.faceConditions[currentFace - 1] == Conditions.ConditionType.RotateAround)
                 {
                     if (!rotate90)
                     {
@@ -242,7 +249,7 @@ public class CC : MonoBehaviour
                         rotate90 = false;
                     }
                 }
-                else if (conditions.faceConditions[currentFace - 1] == Conditions.ConditionType.ToggleTiles)
+                else if (currentCondition.faceConditions[currentFace - 1] == Conditions.ConditionType.ToggleTiles)
                 {
                     audioSrc.PlayOneShot(tileTSound);
 
@@ -255,7 +262,7 @@ public class CC : MonoBehaviour
                         toggleTiles = false;
                     }
                 }
-                else if (conditions.faceConditions[currentFace - 1] == Conditions.ConditionType.Teleport)
+                else if (currentCondition.faceConditions[currentFace - 1] == Conditions.ConditionType.Teleport)
                 {
                     if (!canTeleport)
                     {
