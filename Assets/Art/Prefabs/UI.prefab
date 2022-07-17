@@ -1146,7 +1146,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1557751990}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -1163,8 +1163,7 @@ MonoBehaviour:
     effect.
 
 
-
-    Achieve the win condition on the golden tile to complete the level.'
+    You cannot win on a green tile.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7734a3a0c58f2ea43b5adddab30fbb64, type: 2}
   m_sharedMaterial: {fileID: 4797486630620878897, guid: 7734a3a0c58f2ea43b5adddab30fbb64, type: 2}

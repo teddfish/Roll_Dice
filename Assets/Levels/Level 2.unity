@@ -1792,6 +1792,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 1557751992, guid: f6368a837b4122b4c85b6fa9bafd77fa, type: 3}
+      propertyPath: m_text
+      value: Roll the win condition number onto the golden tile to complete the level.
+      objectReference: {fileID: 0}
     - target: {fileID: 298855394896071075, guid: f6368a837b4122b4c85b6fa9bafd77fa, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 1620
