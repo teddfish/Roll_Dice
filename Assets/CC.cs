@@ -28,20 +28,20 @@ public class CC : MonoBehaviour
     Conditions conditions;
 
     //reverse rotation condition
-    [HideInInspector]public bool alternateMovement;
+    [HideInInspector] public bool alternateMovement;
 
     //double move condition
-    [HideInInspector]public bool rotate90;
+    [HideInInspector] public bool rotate90;
 
     //toggle tiles condition
-    [HideInInspector]public bool toggleTiles;
+    [HideInInspector] public bool toggleTiles;
 
     //reset condition
-    [HideInInspector]public bool canTeleport;
+    [HideInInspector] public bool canTeleport;
 
-    [HideInInspector]public bool hasWon;
+    [HideInInspector] public bool hasWon;
 
-    [HideInInspector]public bool doingNothing;
+    [HideInInspector] public bool doingNothing;
 
 
     Vector3 startPosition;
@@ -72,37 +72,8 @@ public class CC : MonoBehaviour
             return;
         }
 
-        //rotate 90 condition
-        if (rotate90)
-        {
-            audioSrc.PlayOneShot(rotateSound);
 
-            RotateCube();
-            rotate90 = false;
-        }
-
-        //tiles on and off condition
-        if (toggleTiles)
-        {
-
-            var tiles = disappearingTiles.GetComponentsInChildren<BoxCollider>();
-            foreach (var tile in tiles)
-            {
-                tile.enabled = !tile.enabled;
-            }
-            toggleTiles = false;
-        }
-
-        if (canTeleport)
-        {
-            audioSrc.PlayOneShot(teleportSound);
-
-            transform.position = startPosition;
-            validMoveGO.position = startPosition;
-            canTeleport = false;
-        }
-
-        if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow) && leftC.blockMove) || ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && rightC.blockMove) 
+        if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow) && leftC.blockMove) || ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && rightC.blockMove)
         || ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && forwardC.blockMove) || ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) && backC.blockMove))
         {
             audioSrc.PlayOneShot(blockedSound);
@@ -166,9 +137,36 @@ public class CC : MonoBehaviour
             Move(Vector3.back);
             valMove.CheckMove(Vector3.back);
         }
-        else if (Input.GetKeyDown(KeyCode.P) && !backC.blockMove)
+
+        //rotate 90 condition
+        if (rotate90)
         {
+            audioSrc.PlayOneShot(rotateSound);
+
             RotateCube();
+            rotate90 = false;
+        }
+
+        //tiles on and off condition
+        if (toggleTiles)
+        {
+
+            var tiles = disappearingTiles.GetComponentsInChildren<BoxCollider>();
+            foreach (var tile in tiles)
+            {
+                tile.enabled = !tile.enabled;
+            }
+            toggleTiles = false;
+        }
+
+        //teleport condition
+        if (canTeleport)
+        {
+            audioSrc.PlayOneShot(teleportSound);
+
+            transform.position = startPosition;
+            validMoveGO.position = startPosition;
+            canTeleport = false;
         }
 
         Ray ray = new Ray(this.transform.position, Vector3.down);
@@ -281,7 +279,7 @@ public class CC : MonoBehaviour
 
     public void AltMove(Vector3 direction)
     {
-        Vector3 reverseRollEdge = transform.position - (direction - Vector3.down) * -offset;
+        Vector3 reverseRollEdge = transform.position - (direction - Vector3.down) * offset;
         Vector3 axis = Vector3.Cross(Vector3.up, direction);
 
         camShaker.StartShake(direction);
@@ -305,11 +303,13 @@ public class CC : MonoBehaviour
 
         Vector3 pos = transform.position;
 
-        for (int i = 0; i < (90/ rollSpeed); i++)
+        for (int i = 0; i < (90 / rollSpeed); i++)
         {
-            pos += (reverseRollEdge - dir)  * 0.02f;
+            pos -= dir / (90 / rollSpeed);
             transform.RotateAround(reverseRollEdge, axis, rollSpeed);
-            transform.position = new Vector3(pos.x, 0.5f, pos.y);
+            //transform.position = new Vector3(pos.x, 0.5f, pos.y);
+            transform.position = pos;
+
 
             yield return new WaitForSeconds(0.01f);
         }

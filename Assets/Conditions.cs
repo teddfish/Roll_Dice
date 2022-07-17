@@ -29,4 +29,12 @@ public class Conditions : MonoBehaviour
         } 
 
     }
+
+    void OnTriggerExit(Collider other) 
+    {
+        if(other.transform.GetComponentInParent<CC>() != null)
+        {
+            tileTouched = false;
+        }     
+    }
 }
