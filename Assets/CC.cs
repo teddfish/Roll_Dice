@@ -310,7 +310,7 @@ public class CC : MonoBehaviour
         Vector3 rotateAxis = Vector3.up;
 
         StartCoroutine(Rotate(rotatePoint, rotateAxis));
-        moveCounter += 1;
+        //moveCounter += 1;
 
     }
 
