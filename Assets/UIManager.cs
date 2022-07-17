@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-
+    public bool isMenu = false;
     CC cc;
+    [SerializeField] GameObject lvlClr;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,19 +22,29 @@ public class UIManager : MonoBehaviour
             StartCoroutine(Restart());
         }
 
+        if (Input.anyKeyDown && isMenu)
+        {
+            SceneManager.LoadScene(1);
+        }
+
         if (cc.hasWon)
         {
             StartCoroutine(NextLevel());
         }
     }
 
-    IEnumerator Restart(){
-        yield return new WaitForSeconds (0.2f);
+    IEnumerator Restart()
+    {
+        yield return new WaitForSeconds(0.2f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-        IEnumerator NextLevel(){
-        yield return new WaitForSeconds (1f);
+    IEnumerator NextLevel()
+    {
+
+        lvlClr.SetActive(true);
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
     }
 }

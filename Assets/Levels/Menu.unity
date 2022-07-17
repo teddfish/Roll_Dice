@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 404805735}
   - component: {fileID: 404805734}
   - component: {fileID: 404805733}
-  - component: {fileID: 404805737}
   - component: {fileID: 6670421307149709341}
   - component: {fileID: 7734181739811581071}
   m_Layer: 5
@@ -227,53 +226,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &404805737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 404805732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af8e009c431b2f54ab095624c4c4ff99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uiDice:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  lockedSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  brightSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  cc: {fileID: 0}
-  conditions: {fileID: 0}
-  panelSpacing: 21.3333
-  diceSpacing: 3.2
-  fadeSpeed: 5
-  movesText: {fileID: 0}
-  infoTexts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &739231338
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,6 +605,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddf262dd634ffd348b0672ed485a5c45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMenu: 1
+  lvlClr: {fileID: 0}
 --- !u!212 &7734181739811581071
 SpriteRenderer:
   m_ObjectHideFlags: 0
