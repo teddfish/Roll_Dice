@@ -291,7 +291,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 313463445505513385, guid: d032dc598b489ab4c9a75f786d03f25f, type: 3}
       propertyPath: faceConditions.Array.data[1]
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 313463445505513385, guid: d032dc598b489ab4c9a75f786d03f25f, type: 3}
       propertyPath: faceConditions.Array.data[2]
@@ -588,7 +588,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7104078222244102866, guid: 99afd7a6a80a73f4b892fe29a631e0da, type: 3}
       propertyPath: faceConditions.Array.data[1]
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7104078222244102866, guid: 99afd7a6a80a73f4b892fe29a631e0da, type: 3}
       propertyPath: faceConditions.Array.data[2]
