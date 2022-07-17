@@ -1193,10 +1193,6 @@ PrefabInstance:
       propertyPath: conditions
       value: 
       objectReference: {fileID: 895493060}
-    - target: {fileID: 8585452984459872022, guid: f6368a837b4122b4c85b6fa9bafd77fa, type: 3}
-      propertyPath: m_text
-      value: Restart - R
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6368a837b4122b4c85b6fa9bafd77fa, type: 3}
 --- !u!33 &4760856206929303223
