@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2640612732401094828}
   - component: {fileID: 8866179962696217002}
   - component: {fileID: 2165112369115438305}
+  - component: {fileID: 1651530958737649735}
   m_Layer: 0
   m_Name: 'Floaty_Tile '
   m_TagString: Untagged
@@ -42,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4586260061521424761}
-  m_Mesh: {fileID: 4068373912626513877, guid: 5c4f7e41bbd91ce4989a8c536c8552dd, type: 3}
+  m_Mesh: {fileID: 719350111921004692, guid: 29f5254955c80dc4bb3f1bcf66f8e163, type: 3}
 --- !u!23 &2640612732401094828
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -63,8 +64,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a6ffdea8e192f9942b629b540913aaf1, type: 2}
-  - {fileID: 2100000, guid: 7e1c7d459812e4a4b84d72551126afc2, type: 2}
+  - {fileID: 2100000, guid: 7d21c22507f23d841a607aba844279ee, type: 2}
+  - {fileID: 2100000, guid: c3f0f7aba56ec7f47a254d6e7b4daa44, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,3 +116,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1651530958737649735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4586260061521424761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 799de6b9a382d3a4ba9e05ce4ab967b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxCollider: {fileID: 8866179962696217002}
+  fadeSpeed: 1
+  transparentMaterials:
+  - {fileID: 2100000, guid: 7d21c22507f23d841a607aba844279ee, type: 2}
+  - {fileID: 2100000, guid: c3f0f7aba56ec7f47a254d6e7b4daa44, type: 2}
