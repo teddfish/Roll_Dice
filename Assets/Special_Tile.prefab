@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileTouched: 0
-  fx: {fileID: 0}
+  fx: {fileID: 9004518080736400071}
   faceConditions: 000000000000000000000000000000000000000000000000
 --- !u!65 &8297207134265624763
 BoxCollider:
@@ -141,3 +141,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5348417639536512226, guid: f5b0a9ceea7a8914dbf035a8c0cd488e, type: 3}
   m_PrefabInstance: {fileID: 422734882725867342}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9004518080736400071 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8731250828556025225, guid: f5b0a9ceea7a8914dbf035a8c0cd488e, type: 3}
+  m_PrefabInstance: {fileID: 422734882725867342}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d18eba2ae4d4444adbe2cba4920ec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
