@@ -71,18 +71,18 @@ public class UI_Manager : MonoBehaviour
         else
             glowOpacity[1] -= Time.deltaTime * fadeSpeed;
 
-        if (cc.canTeleport)
+        if (cc.rotate90)
             glowOpacity[2] = 1;
         else
             glowOpacity[2] -= Time.deltaTime * fadeSpeed;
 
-        if (floatyTile != null)
-            glowOpacity[3] = floatyTile.opacity;
-
-        if (cc.rotate90)
-            glowOpacity[4] = 1;
+        if (cc.canTeleport)
+            glowOpacity[3] = 1;
         else
-            glowOpacity[4] -= Time.deltaTime * fadeSpeed;
+            glowOpacity[3] -= Time.deltaTime * fadeSpeed;
+
+        if (floatyTile != null)
+            glowOpacity[4] = floatyTile.opacity;
 
         glowOpacity[5] += Time.deltaTime * fadeSpeed * ConditionToSign(cc.alternateMovement);
 
