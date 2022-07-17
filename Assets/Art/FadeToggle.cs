@@ -5,6 +5,7 @@ public class FadeToggle : MonoBehaviour
 {
     [SerializeField] BoxCollider boxCollider;
     [SerializeField] float fadeSpeed = 1;
+    [SerializeField] float minimumOpacity = 0.01f;
     private MeshRenderer mesh;
 
     private float opacity;
@@ -24,7 +25,7 @@ public class FadeToggle : MonoBehaviour
     void AdjustOpacity(float amount)
     {
         opacity = opacity + amount;
-        opacity = Mathf.Clamp(opacity, 0, 1);
+        opacity = Mathf.Clamp(opacity, minimumOpacity, 1);
         foreach (var mat in mesh.materials)
         {
             var col = mat.color;
