@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using TMPro;
 
 public class UI_Manager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] float panelSpacing;
     [SerializeField] float diceSpacing;
     [SerializeField] float fadeSpeed = 2;
+    [SerializeField] TextMeshProUGUI movesText;
 
 
     private List<RectTransform>[] fillDice;
@@ -74,18 +76,15 @@ public class UI_Manager : MonoBehaviour
         else
             glowOpacity[2] -= Time.deltaTime * fadeSpeed;
 
-        if (cc.rotate90)
-            glowOpacity[3] = 1;
-        else
-            glowOpacity[3] -= Time.deltaTime * fadeSpeed;
-
         if (floatyTile != null)
-            glowOpacity[4] = floatyTile.opacity;
-        glowOpacity[5] += Time.deltaTime * fadeSpeed * ConditionToSign(cc.alternateMovement); ;
+            glowOpacity[3] = floatyTile.opacity;
 
+        if (cc.rotate90)
+            glowOpacity[4] = 1;
+        else
+            glowOpacity[4] -= Time.deltaTime * fadeSpeed;
 
-
-
+        glowOpacity[5] += Time.deltaTime * fadeSpeed * ConditionToSign(cc.alternateMovement);
 
         //set all opacities
         for (int i = 0; i < 6; i++)
@@ -93,6 +92,10 @@ public class UI_Manager : MonoBehaviour
             glowOpacity[i] = Mathf.Clamp(glowOpacity[i], 0, 1);
             brightSprites[i].color = new Color(1, 1, 1, glowOpacity[i]);
         }
+
+
+        //setMoves
+        movesText.text = "Moves: " + cc.moveCounter;
     }
 
     int ConditionToSign(bool condition)

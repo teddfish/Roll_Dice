@@ -8,8 +8,8 @@ public class Conditions : MonoBehaviour
     {
         Win,
         Nothing,
-        Teleport,
         RotateAround,
+        Teleport,
         ToggleTiles,
         ReverseRotation,
     }
@@ -21,19 +21,19 @@ public class Conditions : MonoBehaviour
 
     public ConditionType[] faceConditions;
 
-    private void OnTriggerEnter(Collider other) 
-    {        
-        if(other.transform.GetComponentInParent<CC>() != null)
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.GetComponentInParent<CC>() != null)
         {
             tileTouched = true;
-        } 
+        }
     }
 
-    void OnTriggerExit(Collider other) 
+    void OnTriggerExit(Collider other)
     {
-        if(other.transform.GetComponentInParent<CC>() != null)
+        if (other.transform.GetComponentInParent<CC>() != null)
         {
             tileTouched = false;
-        }     
+        }
     }
 }
