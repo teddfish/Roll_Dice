@@ -11,25 +11,40 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CC>();
+        if (!isMenu)
+        {
+            cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CC>();
+
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            StartCoroutine(Restart());
-        }
-
         if (Input.anyKeyDown && isMenu)
         {
             SceneManager.LoadScene(1);
         }
 
-        if (cc.hasWon)
+        if (isMenu)
         {
-            StartCoroutine(NextLevel());
+            return;
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            StartCoroutine(Restart());
+        }
+
+
+
+        if (cc.hasWon || Input.GetKeyDown(KeyCode.L))
+        {
+            if (SceneManager.GetActiveScene().buildIndex < 15)
+                StartCoroutine(NextLevel());
+            else
+                StartCoroutine(BackToMenu());
         }
     }
 
@@ -45,6 +60,17 @@ public class UIManager : MonoBehaviour
         lvlClr.SetActive(true);
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+
+    }
+
+        IEnumerator BackToMenu()
+    {
+
+        lvlClr.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(0);
+
 
     }
 }
