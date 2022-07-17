@@ -1,16 +1,20 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class UI_Manager : MonoBehaviour
 {
-    [SerializeField] RectTransform[] uIdice;
+    [SerializeField] RectTransform[] uiDice;
+    [SerializeField] SpriteRenderer[] lockedSprites;
+    [SerializeField] SpriteRenderer[] brightSprites;
+    [SerializeField] CC cc;
+
     [SerializeField] Conditions conditions;
     [SerializeField] float panelSpacing;
     [SerializeField] float diceSpacing;
 
     private List<RectTransform>[] fillDice;
-    // Start is called before the first frame update
+    private float[] glowOpacity;
+
     void Start()
     {
         fillDice = new List<RectTransform>[6];
@@ -24,17 +28,11 @@ public class UI_Manager : MonoBehaviour
         i = 0;
         foreach (var cond in conditions.faceConditions)
         {
-            fillDice[(int)cond].Add(uIdice[i]);
+            fillDice[(int)cond].Add(uiDice[i]);
             i++;
         }
 
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        int i = 0;
+        i = 0;
         int j = 0;
         foreach (var temp in fillDice)
         {
@@ -46,7 +44,21 @@ public class UI_Manager : MonoBehaviour
                 temp2.localPosition = pos;
                 j++;
             }
+
+            if (j == 0)
+            {
+                lockedSprites[i].color = new Color(1, 1, 1, 1);
+            }
             i++;
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(cc.rotate90)
+        {
+            //WIP
         }
     }
 }
