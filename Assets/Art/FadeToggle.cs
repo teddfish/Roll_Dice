@@ -8,7 +8,7 @@ public class FadeToggle : MonoBehaviour
     [SerializeField] float minimumOpacity = 0.01f;
     private MeshRenderer mesh;
 
-    private float opacity;
+    [HideInInspector] public float opacity;
     // Start is called before the first frame update
     void Start()
     {

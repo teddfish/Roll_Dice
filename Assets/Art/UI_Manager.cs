@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class UI_Manager : MonoBehaviour
@@ -11,14 +12,19 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] Conditions conditions;
     [SerializeField] float panelSpacing;
     [SerializeField] float diceSpacing;
+    [SerializeField] float fadeSpeed = 2;
+
 
     private List<RectTransform>[] fillDice;
     private float[] glowOpacity;
+    private FadeToggle floatyTile;
 
     void Start()
     {
         fillDice = new List<RectTransform>[6];
         int i = 0;
+        glowOpacity = new float[6];
+        floatyTile = FindObjectOfType<FadeToggle>();
 
         for (i = 0; i < 6; i++)
         {
@@ -56,9 +62,41 @@ public class UI_Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(cc.rotate90)
+        glowOpacity[0] += Time.deltaTime * fadeSpeed * ConditionToSign(cc.hasWon);
+
+        if (cc.doingNothing)
+            glowOpacity[1] = 1;
+        else
+            glowOpacity[1] -= Time.deltaTime * fadeSpeed;
+
+        if (cc.canTeleport)
+            glowOpacity[2] = 1;
+        else
+            glowOpacity[2] -= Time.deltaTime * fadeSpeed;
+
+        if (cc.rotate90)
+            glowOpacity[3] = 1;
+        else
+            glowOpacity[3] -= Time.deltaTime * fadeSpeed;
+
+        if (floatyTile != null)
+            glowOpacity[4] = floatyTile.opacity;
+        glowOpacity[5] += Time.deltaTime * fadeSpeed * ConditionToSign(cc.alternateMovement); ;
+
+
+
+
+
+        //set all opacities
+        for (int i = 0; i < 6; i++)
         {
-            //WIP
+            glowOpacity[i] = Mathf.Clamp(glowOpacity[i], 0, 1);
+            brightSprites[i].color = new Color(1, 1, 1, glowOpacity[i]);
         }
+    }
+
+    int ConditionToSign(bool condition)
+    {
+        return Convert.ToInt32(condition) * 2 - 1;
     }
 }
