@@ -67,6 +67,7 @@ public class CC : MonoBehaviour
 
     void Update()
     {
+        doingNothing = false;
         if (rolling)
         {
             return;
@@ -163,9 +164,7 @@ public class CC : MonoBehaviour
         if (canTeleport)
         {
             audioSrc.PlayOneShot(teleportSound);
-
-            transform.position = startPosition;
-            validMoveGO.position = startPosition;
+            StartCoroutine(TeleportCube());
             canTeleport = false;
         }
 
@@ -206,10 +205,15 @@ public class CC : MonoBehaviour
 
                 if (conditions.faceConditions[currentFace - 1] == Conditions.ConditionType.Win)
                 {
+                    if (!hasWon)
+                    {
+                        hasWon = true;
+                    }                    
                     print("You win");
                 }
                 else if (conditions.faceConditions[currentFace - 1] == Conditions.ConditionType.Nothing)
                 {
+                    doingNothing = true;
                     audioSrc.PlayOneShot(nothingSound);
                 }
                 else if (conditions.faceConditions[currentFace - 1] == Conditions.ConditionType.ReverseRotation)
@@ -284,6 +288,8 @@ public class CC : MonoBehaviour
 
         camShaker.StartShake(-direction);
         StartCoroutine(ReverseRoll(reverseRollEdge, axis, direction));
+        audioSrc.PlayOneShot(moveSound);
+        
         moveCounter += 1;
     }
 
@@ -342,6 +348,18 @@ public class CC : MonoBehaviour
 
             yield return new WaitForSeconds(0.01f);
         }
+
+        rolling = false;
+    }
+
+    IEnumerator TeleportCube()
+    {
+        rolling = true;
+        
+        yield return new WaitForSeconds(0.5f);
+
+        transform.position = startPosition;
+        validMoveGO.position = startPosition;
 
         rolling = false;
     }
