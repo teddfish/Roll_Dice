@@ -282,7 +282,7 @@ public class CC : MonoBehaviour
         Vector3 reverseRollEdge = transform.position - (direction - Vector3.down) * offset;
         Vector3 axis = Vector3.Cross(Vector3.up, direction);
 
-        camShaker.StartShake(direction);
+        camShaker.StartShake(-direction);
         StartCoroutine(ReverseRoll(reverseRollEdge, axis, direction));
         moveCounter += 1;
     }
