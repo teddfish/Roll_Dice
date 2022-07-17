@@ -1128,7 +1128,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -20, y: 2.2940102}
+  m_AnchoredPosition: {x: -20, y: 43.42}
   m_SizeDelta: {x: 350, y: 50}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &1557751993
@@ -1146,7 +1146,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1557751990}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -1163,7 +1163,8 @@ MonoBehaviour:
     effect.
 
 
-    Achieve the first condition to complete the level.'
+
+    Achieve the win condition on the golden tile to complete the level.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7734a3a0c58f2ea43b5adddab30fbb64, type: 2}
   m_sharedMaterial: {fileID: 4797486630620878897, guid: 7734a3a0c58f2ea43b5adddab30fbb64, type: 2}
@@ -1202,7 +1203,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 11.6
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0

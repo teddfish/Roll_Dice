@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9049629497796510535}
   - component: {fileID: 6517352275195606925}
   - component: {fileID: 5599061740908520333}
+  - component: {fileID: 8731250828556025225}
   m_Layer: 0
   m_Name: Prefab_Special_Tile
   m_TagString: Untagged
@@ -98,7 +99,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca760527b81981f44a29fcd719236bb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowMaterial: {fileID: 2100000, guid: f58c2ed6d1017524787c3b74788899c8, type: 2}
   glowSpeed: 3
   glowMax: {r: 1, g: 1, b: 1, a: 0}
   glowMin: {r: 0.33474642, g: 0.7264151, b: 0.3186632, a: 0}
+--- !u!114 &8731250828556025225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4716030964985337432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d18eba2ae4d4444adbe2cba4920ec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winFx: {fileID: 1729478374878216721, guid: f3e55f2190c1ad448912df1705674cf0, type: 3}
+  diceSpawnOffset: {x: 0, y: -0.25, z: 0}
