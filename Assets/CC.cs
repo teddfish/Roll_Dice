@@ -47,7 +47,7 @@ public class CC : MonoBehaviour
         conditions = GameObject.Find("Special_Tile").GetComponent<Conditions>();
 
         startPosition = transform.position;
-        
+
     }
 
 
@@ -68,16 +68,13 @@ public class CC : MonoBehaviour
         //tiles on and off condition
         if (toggleTiles)
         {
-            if (disappearingTiles.activeInHierarchy)
-            {
-                disappearingTiles.SetActive(false);
-                toggleTiles = false;
-            }
-            else {
-                disappearingTiles.SetActive(true);
-                toggleTiles = false;
-            }
 
+            var tiles = disappearingTiles.GetComponentsInChildren<BoxCollider>();
+            foreach (var tile in tiles)
+            {
+                tile.enabled = !tile.enabled;
+            }
+            toggleTiles = false;
         }
 
         if (canTeleport)
@@ -118,7 +115,7 @@ public class CC : MonoBehaviour
 
         }
         else if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && !forwardC.blockMove)
-        {            
+        {
             //reverse movement
             if (alternateMovement == true)
             {
@@ -194,12 +191,13 @@ public class CC : MonoBehaviour
                     print("Doing nothing");
                 }
                 else if (conditions.faceConditions[currentFace - 1] == Conditions.ConditionType.ReverseRotation)
-                {   
+                {
                     if (!alternateMovement)
                     {
                         alternateMovement = true;
                     }
-                    else {
+                    else
+                    {
                         alternateMovement = false;
                     }
                 }
@@ -209,17 +207,19 @@ public class CC : MonoBehaviour
                     {
                         rotate90 = true;
                     }
-                    else {
+                    else
+                    {
                         rotate90 = false;
                     }
-                }                
+                }
                 else if (conditions.faceConditions[currentFace - 1] == Conditions.ConditionType.ToggleTiles)
                 {
                     if (!toggleTiles)
                     {
                         toggleTiles = true;
                     }
-                    else {
+                    else
+                    {
                         toggleTiles = false;
                     }
                 }
@@ -229,7 +229,8 @@ public class CC : MonoBehaviour
                     {
                         canTeleport = true;
                     }
-                    else {
+                    else
+                    {
                         canTeleport = false;
                     }
                 }

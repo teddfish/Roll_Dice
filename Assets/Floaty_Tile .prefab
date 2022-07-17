@@ -130,6 +130,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 8866179962696217002}
   fadeSpeed: 1
-  transparentMaterials:
-  - {fileID: 2100000, guid: 7d21c22507f23d841a607aba844279ee, type: 2}
-  - {fileID: 2100000, guid: c3f0f7aba56ec7f47a254d6e7b4daa44, type: 2}
