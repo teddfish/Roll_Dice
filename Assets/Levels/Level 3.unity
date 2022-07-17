@@ -1896,7 +1896,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 348015552773508073, guid: 99afd7a6a80a73f4b892fe29a631e0da, type: 3}
       propertyPath: m_Name
-      value: Special_Tile
+      value: Win_Tile
       objectReference: {fileID: 0}
     - target: {fileID: 1125819512534339923, guid: 99afd7a6a80a73f4b892fe29a631e0da, type: 3}
       propertyPath: m_RootOrder

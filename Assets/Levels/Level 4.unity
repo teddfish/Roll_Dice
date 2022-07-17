@@ -123,23 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &13434445 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2561096650838495970, guid: f6368a837b4122b4c85b6fa9bafd77fa, type: 3}
-  m_PrefabInstance: {fileID: 2561096650970565254}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &13434451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 13434445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddf262dd634ffd348b0672ed485a5c45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &123500300
 GameObject:
   m_ObjectHideFlags: 0
@@ -1505,10 +1488,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 304575016, guid: f6368a837b4122b4c85b6fa9bafd77fa, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 963194227}
     - target: {fileID: 1557751992, guid: f6368a837b4122b4c85b6fa9bafd77fa, type: 3}
       propertyPath: m_text
       value: 'Roll the specified number onto the green tile to get the corresponding
@@ -1517,10 +1496,6 @@ PrefabInstance:
 
         You cannot win on a green tile, but the golden tile can
         still activate other effects.'
-      objectReference: {fileID: 0}
-    - target: {fileID: 298855394896071075, guid: f6368a837b4122b4c85b6fa9bafd77fa, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 1620
       objectReference: {fileID: 0}
     - target: {fileID: 2561096650838495969, guid: f6368a837b4122b4c85b6fa9bafd77fa, type: 3}
       propertyPath: m_Camera
@@ -1622,10 +1597,6 @@ PrefabInstance:
       propertyPath: conditions
       value: 
       objectReference: {fileID: 1964351996}
-    - target: {fileID: 8585452984459872022, guid: f6368a837b4122b4c85b6fa9bafd77fa, type: 3}
-      propertyPath: m_text
-      value: Restart - R
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6368a837b4122b4c85b6fa9bafd77fa, type: 3}
 --- !u!65 &4204861010710618848
