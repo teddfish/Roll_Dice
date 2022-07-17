@@ -15,7 +15,7 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] float diceSpacing;
     [SerializeField] float fadeSpeed = 2;
     [SerializeField] TextMeshProUGUI movesText;
-
+    [SerializeField] TextMeshProUGUI[] infoTexts;
 
     private List<RectTransform>[] fillDice;
     private float[] glowOpacity;
@@ -93,9 +93,24 @@ public class UI_Manager : MonoBehaviour
             brightSprites[i].color = new Color(1, 1, 1, glowOpacity[i]);
         }
 
-
         //setMoves
         movesText.text = "Moves: " + cc.moveCounter;
+
+        //info
+        if ((Input.GetKeyDown(KeyCode.I)))
+        {
+            foreach (var infoText in infoTexts)
+            {
+                infoText.enabled = true;
+            }
+        }
+        else if ((Input.GetKeyUp(KeyCode.I)))
+        {
+            foreach (var infoText in infoTexts)
+            {
+                infoText.enabled = false;
+            }
+        }
     }
 
     int ConditionToSign(bool condition)
