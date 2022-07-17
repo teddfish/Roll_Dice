@@ -8,10 +8,10 @@ public class Conditions : MonoBehaviour
     {
         Win,
         Nothing,
+        Teleport,
         RotateAround,
-        ReverseRotation,
         ToggleTiles,
-        Teleport
+        ReverseRotation,
     }
 
     public bool tileTouched;
