@@ -1500,8 +1500,12 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7104078222244102866, guid: 99afd7a6a80a73f4b892fe29a631e0da, type: 3}
-      propertyPath: faceConditions.Array.data[4]
+      propertyPath: faceConditions.Array.data[3]
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7104078222244102866, guid: 99afd7a6a80a73f4b892fe29a631e0da, type: 3}
+      propertyPath: faceConditions.Array.data[4]
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7104078222244102866, guid: 99afd7a6a80a73f4b892fe29a631e0da, type: 3}
       propertyPath: faceConditions.Array.data[5]
@@ -2256,7 +2260,12 @@ PrefabInstance:
       propertyPath: conditions
       value: 
       objectReference: {fileID: 1532110806}
-    m_RemovedComponents: []
+    - target: {fileID: 6101945174730763992, guid: f6368a837b4122b4c85b6fa9bafd77fa, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5251059198971815433, guid: f6368a837b4122b4c85b6fa9bafd77fa, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f6368a837b4122b4c85b6fa9bafd77fa, type: 3}
 --- !u!1001 &8901864355901652243
 PrefabInstance:
