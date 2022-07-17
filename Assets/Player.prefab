@@ -162,18 +162,6 @@ PrefabInstance:
       propertyPath: forwardC
       value: 
       objectReference: {fileID: 967292101772246318}
-    - target: {fileID: 8693002037482795106, guid: b29d816070c88b04681089a4b4a59149, type: 3}
-      propertyPath: camShaker
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8693002037482795106, guid: b29d816070c88b04681089a4b4a59149, type: 3}
-      propertyPath: rollSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8693002037482795106, guid: b29d816070c88b04681089a4b4a59149, type: 3}
-      propertyPath: disappearingTiles
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8693002037482795107, guid: b29d816070c88b04681089a4b4a59149, type: 3}
       propertyPath: m_Name
       value: Cube

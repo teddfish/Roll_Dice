@@ -208,6 +208,7 @@ public class CC : MonoBehaviour
                     if (!hasWon)
                     {
                         hasWon = true;
+                        audioSrc.PlayOneShot(winSound);
                     }                    
                     print("You win");
                 }
@@ -218,6 +219,7 @@ public class CC : MonoBehaviour
                 }
                 else if (conditions.faceConditions[currentFace - 1] == Conditions.ConditionType.ReverseRotation)
                 {
+                    audioSrc.PlayOneShot(reverseMSound);
                     if (!alternateMovement)
                     {
                         alternateMovement = true;
@@ -289,7 +291,7 @@ public class CC : MonoBehaviour
         camShaker.StartShake(-direction);
         StartCoroutine(ReverseRoll(reverseRollEdge, axis, direction));
         audioSrc.PlayOneShot(moveSound);
-        
+
         moveCounter += 1;
     }
 
