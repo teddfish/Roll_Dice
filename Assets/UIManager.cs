@@ -39,7 +39,7 @@ public class UIManager : MonoBehaviour
 
 
 
-        if (cc.hasWon || Input.GetKeyDown(KeyCode.L))
+        if (cc.hasWon)
         {
             if (SceneManager.GetActiveScene().buildIndex < 15)
                 StartCoroutine(NextLevel());
