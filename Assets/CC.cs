@@ -68,7 +68,8 @@ public class CC : MonoBehaviour
     void Update()
     {
         doingNothing = false;
-        if (rolling)
+        
+        if (rolling || hasWon)
         {
             return;
         }

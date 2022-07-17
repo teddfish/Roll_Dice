@@ -3349,13 +3349,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6d51837aa52d0b48b4bf90d7496c7c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winSound: {fileID: 0}
-  nothingSound: {fileID: 0}
-  rotateSound: {fileID: 0}
-  teleportSound: {fileID: 0}
-  tileTSound: {fileID: 0}
-  reverseMSound: {fileID: 0}
-  conditionOffSound: {fileID: 0}
 --- !u!82 &1514910707
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3366,15 +3359,15 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: bb367d871693fff4786648a7d46fe9bd, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 120
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
